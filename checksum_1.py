@@ -15,12 +15,13 @@ numbers_to_checksum = '''3093	749	3469	142	2049	3537	1596	3035	2424	3982	3290	12
 151	3473	1435	87	1517	1480	140	2353	1293	118	163	3321	2537	3061	1532	3402
 127	375	330	257	220	295	145	335	304	165	151	141	289	256	195	272'''
 list_of_rows = numbers_to_checksum.split('\n')
-list_of_numbers = [row.split('\t') for row in list_of_rows]
+list_of_numbers = [row for row in list_of_rows]
 
 summary = 0
-print(list_of_numbers)
+# print(list_of_numbers)
 for row in list_of_numbers:
-    for el in row:
-        summary += int(max(el)) - int(min(el))
+        numbers = [int(el) for el in row.split('\t')]
+        print(numbers)
+        summary += max(numbers) - min(numbers)
 
 print(summary)
