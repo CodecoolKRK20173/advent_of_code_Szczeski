@@ -1,4 +1,4 @@
-numbers_to_checksum = '''3093	749	3469	142	2049	3537	1596	3035	2424	3982	3290	125	249	131	118	3138
+numbers_to_checksum = '''3094	749	3469	142	2049	3537	1596	3035	2424	3982	3290	125	249	131	118	3138
 141	677	2705	2404	2887	2860	1123	2714	117	1157	2607	1800	153	130	1794	3272
 182	93	2180	114	103	1017	95	580	2179	2470	2487	2806	1574	1325	1898	1706
 3753	233	3961	3747	3479	3597	1303	2612	4043	1815	3318	737	197	3943	239	254
@@ -21,6 +21,11 @@ summary = 0
 
 for row in list_of_numbers:
     numbers = [int(el) for el in row.split('\t')]
-    summary += max(numbers) - min(numbers)
+    for i in range(len(numbers)):
+        for j in range(i+1, len(numbers)):
+            greater_number = max(numbers[i], numbers[j])
+            lower_number = min(numbers[i], numbers[j])
+            if greater_number % lower_number == 0:
+                summary += greater_number // lower_number
 
 print(summary)
