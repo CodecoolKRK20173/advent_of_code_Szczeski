@@ -9,9 +9,13 @@ def jump_on_list(numbers):
     i = 0
     while i < len(numbers):
         steps += 1
-        numbers[i] += 1
-        i += numbers[i] - 1
-        
+        if numbers[i] >= 3:
+            numbers[i] -= 1
+            i += numbers[i] + 1
+        else:
+            numbers[i] += 1
+            i += numbers[i] - 1
+            
     return steps
 
 
@@ -22,5 +26,3 @@ def main():
     print(steps)
 
 main()
-
-    
